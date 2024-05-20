@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="
+        http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+    <!-- Since we're dependent on Address object to get the address, so we will have to create address and then inject it into Student object
+    and hence in Student object we're taking reference of addrId not value. Ref attribute helps to inject in XML configuration. XML config or configs
+    are instructions given to Spring Containers or IOC Containers-->
+    <bean class="com.learning.beans.Address" id="addrId">
+    <property name="houseno" value="21"/>
+    <property name="colony" value="Kasturba Society"/>
+    <property name="city" value="Pune"/>
+    </bean>
+
+    <bean class="com.learning.beans.Student" id="stdId">
+        <property name="name" value="Sourav"/>
+        <property name="rollno" value="21"/>
+        <property name="email" value="sourav@gmail.com"/>
+        <property name="address" ref="addrId"/>
+
+    </bean>
+</beans>
